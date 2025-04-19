@@ -1,6 +1,15 @@
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  height: 100%;
+}
 .bg{
   margin: 0px;
-  width: 50%
+  width: 50%;
+  background-color: rgb(230, 230, 230);
+  border-radius: 10px;
 }
 
 .blur{
@@ -17,6 +26,11 @@
   z-index: 0;
 }
 
-.add{
-  margin: 10px;
+.addTask{
+  margin: 30px;
+}
+
+.title{
+  font-size: 30px;
+  text-align: center;
 }

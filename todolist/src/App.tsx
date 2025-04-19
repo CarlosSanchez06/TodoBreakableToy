@@ -14,10 +14,12 @@ function App() {
   const handleClose = () => setOpen(false);
 
   return (
+    <div className={styles.container}>
     <ProviderTask>
       <div className={styles.bg}>
+        <h3 className={styles.title}>Task Manager</h3>
         <NewTodo></NewTodo>
-        <Button variant="contained" className={styles.add} onClick={handleOpen}>
+        <Button variant="contained" className={styles.AddTask} onClick={handleOpen}>
           + New To Do
         </Button>
         <Modal
@@ -33,6 +35,7 @@ function App() {
         <StatsTodo></StatsTodo>
       </div>
     </ProviderTask>
+    </div>
   );
 }
 

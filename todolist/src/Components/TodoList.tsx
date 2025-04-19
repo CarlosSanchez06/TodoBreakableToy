@@ -7,7 +7,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Button, Checkbox, Modal } from "@mui/material";
 import styles from "./TodoList.module.css";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { TaskContext, TaskInt } from "../Context";
 import EditTask from "./EditTask";
 
@@ -138,8 +138,14 @@ const TodoList: React.FC = () => {
   };
 
   const [id,setId] = useState('-1');
+  const hasBeenRendered = useRef(false);
+  
   useEffect(() => {
+    if(hasBeenRendered.current){
     handleOpen();
+    return;
+    }
+    hasBeenRendered.current = true
   }, [id]);
 
   const handleEdit = (_id: string) => {
@@ -191,7 +197,7 @@ const optionsPutState = {
   }
 
   return (
-    <div>
+    <div className={styles.container}>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
