@@ -1,0 +1,24 @@
+.searchContainer {
+  margin: 5px;
+  border: 3px solid rgba(0, 0, 0, .2);
+  padding: 10px;
+}
+
+.searchItem {
+  display: flex;
+  margin-top: 10px;
+}
+
+.fieldName {
+  margin-right: 15px;
+  width: 100px;
+}
+
+.samerow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.InputName {
+  width: 100%;
+}

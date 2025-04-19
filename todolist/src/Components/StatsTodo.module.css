@@ -1,0 +1,16 @@
+.container{
+    display: flex;
+    justify-content: space-between;
+    margin: 5px;
+    border: 3px solid rgba(0, 0, 0, .2);
+    padding: 10px;
+}
+
+.itemStat{
+    display: flex;
+}
+
+.valueStat{
+    margin-right: 50px;
+    width: 30%;
+}
