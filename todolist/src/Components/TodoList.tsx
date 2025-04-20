@@ -46,7 +46,7 @@ const TodoList: React.FC = () => {
               priority: task.priority,
               dueDate: task.dueDate,
               doneDate: task.doneDate,
-              creationDate: task.creationDate
+              creationDate: task.creationDate,
             };
             return taskTemp;
           }
@@ -78,7 +78,7 @@ const TodoList: React.FC = () => {
               priority: task.priority,
               dueDate: task.dueDate,
               doneDate: task.doneDate,
-              creationDate: task.creationDate
+              creationDate: task.creationDate,
             };
             return taskTemp;
           }
@@ -110,7 +110,7 @@ const TodoList: React.FC = () => {
               priority: task.priority,
               dueDate: task.dueDate,
               doneDate: task.doneDate,
-              creationDate: task.creationDate
+              creationDate: task.creationDate,
             };
             return taskTemp;
           }
@@ -149,38 +149,24 @@ const TodoList: React.FC = () => {
       });
   };
 
-  const [id,setId] = useState('-1');
-  const hasBeenRendered = useRef(false);
-  
-  useEffect(() => {
-    if(hasBeenRendered.current){
-    handleOpen();
-    return;
-    }
-    hasBeenRendered.current = true
-  }, [id]);
+  const [id, setId] = useState("-1");
 
   const handleEdit = (_id: string) => {
     setId(_id);
-    if(id == _id ){
-      handleOpen();
-    }
+    handleOpen();
   };
 
-const optionsPutState = {
+  const optionsPutState = {
     method: "PUT",
     headers: {
       "Content-type": "application/json",
     },
-    body: JSON.stringify({
-      
-    }),
+    body: JSON.stringify({}),
   };
-
 
   const taskDone = (_id: String) => {
     console.log("optionsPutState");
-    fetch(`http://localhost:9090/todo/${_id}/done`,optionsPutState)
+    fetch(`http://localhost:9090/todo/${_id}/done`, optionsPutState)
       .then((response) => response.json())
       .then((data) => {
         console.log("data");
@@ -190,7 +176,7 @@ const optionsPutState = {
 
   const taskUnDone = (_id: String) => {
     console.log(optionsPutState);
-    fetch(`http://localhost:9090/todo/${_id}/undone`,optionsPutState)
+    fetch(`http://localhost:9090/todo/${_id}/undone`, optionsPutState)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
@@ -198,15 +184,14 @@ const optionsPutState = {
       });
   };
 
-
   const handleState = (_id: String, _state: String) => {
-    if(_state== 'pending'){
-      taskDone(_id)
-    }else{
-      taskUnDone(_id)
+    if (_state == "pending") {
+      taskDone(_id);
+    } else {
+      taskUnDone(_id);
     }
-    console.log('Heello')
-  }
+    console.log("Heello");
+  };
 
   return (
     <div className={styles.container}>
@@ -234,12 +219,10 @@ const optionsPutState = {
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
                 <TableCell align="right">
-                  
-                  <Button onClick={() => handleState(task.id,task.state)}>
+                  <Button onClick={() => handleState(task.id, task.state)}>
                     {task.state}
                   </Button>
-                  
-                  </TableCell>
+                </TableCell>
                 <TableCell align="right">{task.text}</TableCell>
                 <TableCell align="right">{task.priority}</TableCell>
                 <TableCell align="right">{task.dueDate}</TableCell>
@@ -247,6 +230,14 @@ const optionsPutState = {
                   <Button onClick={() => handleEdit(task.id)}>Edit</Button>
 
                   <Button onClick={() => handleDelete(task.id)}>Delete</Button>
+                  <Modal
+                    open={open}
+                    onClose={handleClose}
+                    aria-labelledby="modal-modal-title"
+                    aria-describedby="modal-modal-description"
+                  >
+                    <EditTask id={id} />
+                  </Modal>
                 </TableCell>
               </TableRow>
             ))}
@@ -258,14 +249,6 @@ const optionsPutState = {
         {page}
         <Button onClick={handleNextPage}>Next</Button>
       </div>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <EditTask id={id} />
-      </Modal>
     </div>
   );
 };
