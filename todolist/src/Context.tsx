@@ -7,7 +7,7 @@ export interface TaskInt{
         priority: string
         dueDate: string
         doneDate: string
-        createDate: string
+        creationDate: string
 }
 
 interface ContextoType{

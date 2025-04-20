@@ -40,14 +40,16 @@ const NewTodo = () => {
     fetch(`http://localhost:9090/todo/filter/all?page=${page}&priority=${priority}&state=${state}&substring=${text}`)
     .then((response) => response.json())
     .then((data) => {
-      const arrTemp = data.map((task: { id: any; state: any; text: any; priority: any; dueDate: any; }) => {
+      const arrTemp = data.map((task: { id: any; state: any; text: any; priority: any; dueDate: any;doneDate: any; creationDate: any }) => {
         console.log(task.state)
         const taskTemp = {
           id: task.id,
           state: task.state ,
           text: task.text,
           priority: task.priority,
-          dueDate: task.dueDate
+          dueDate: task.dueDate,
+          doneDate: task.doneDate,
+          creationDate: task.creationDate
         };
         return taskTemp;
       });

@@ -35,6 +35,8 @@ const TodoList: React.FC = () => {
             text: any;
             priority: any;
             dueDate: any;
+            doneDate: any;
+            creationDate: any;
           }) => {
             console.log(task.state);
             const taskTemp = {
@@ -43,6 +45,8 @@ const TodoList: React.FC = () => {
               text: task.text,
               priority: task.priority,
               dueDate: task.dueDate,
+              doneDate: task.doneDate,
+              creationDate: task.creationDate
             };
             return taskTemp;
           }
@@ -63,6 +67,8 @@ const TodoList: React.FC = () => {
             text: any;
             priority: any;
             dueDate: any;
+            doneDate: any;
+            creationDate: any;
           }) => {
             console.log(task.state);
             const taskTemp = {
@@ -71,6 +77,8 @@ const TodoList: React.FC = () => {
               text: task.text,
               priority: task.priority,
               dueDate: task.dueDate,
+              doneDate: task.doneDate,
+              creationDate: task.creationDate
             };
             return taskTemp;
           }
@@ -92,6 +100,8 @@ const TodoList: React.FC = () => {
             text: any;
             priority: any;
             dueDate: any;
+            doneDate: any;
+            creationDate: any;
           }) => {
             const taskTemp = {
               id: task.id,
@@ -99,6 +109,8 @@ const TodoList: React.FC = () => {
               text: task.text,
               priority: task.priority,
               dueDate: task.dueDate,
+              doneDate: task.doneDate,
+              creationDate: task.creationDate
             };
             return taskTemp;
           }

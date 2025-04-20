@@ -23,6 +23,8 @@ export const ProviderTask: React.FC<ProviderTaskProps> = ({ children }) => {
             text: any;
             priority: any;
             dueDate: any;
+            doneDate: any;
+            creationDate: any;
           }) => {
             console.log(task.state);
             const taskTemp = {
@@ -31,6 +33,8 @@ export const ProviderTask: React.FC<ProviderTaskProps> = ({ children }) => {
               text: task.text,
               priority: task.priority,
               dueDate: task.dueDate,
+              doneDate: task.doneDate,
+              creationDate: task.creationDate
             };
             return taskTemp;
           }

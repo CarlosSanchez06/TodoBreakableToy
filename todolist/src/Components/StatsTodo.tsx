@@ -9,7 +9,8 @@ const StatsTodo = () => {
   }
   const { taskList, setTaskList } = contexto;
 
-  const calculateAverageDurations = (tasks: TaskInt[]) => {
+  const calculateAverageDurations = () => {
+    console.log(taskList)
     let totalDuration = 0;
     let totalCount = 0;
 
@@ -19,15 +20,19 @@ const StatsTodo = () => {
       "3": { total: 0, count: 0 },
     };
 
-    tasks.forEach((task) => {
-      if (task.doneDate == "") {
+    taskList.forEach((task) => {
+      if (task.state == "pending") {
         return;
       }
-      const start = new Date(task.createDate);
+      const start = new Date(task.creationDate);
       const end = new Date(task.doneDate);
+      console.log('StartDate2 ', task.creationDate);
+      console.log('EndDate2 ', task.doneDate );
+
 
       const duration =
         (end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24); // duración en días
+      console.log("Duration " + duration);
 
       totalDuration += duration;
       totalCount++;
@@ -37,6 +42,7 @@ const StatsTodo = () => {
     });
 
     const generalAverage = totalCount ? totalDuration / totalCount : 0;
+    console.log("Total Count" + totalCount);
 
     const priorityAverages = {
       1: priorityData[1].count
@@ -63,7 +69,7 @@ const StatsTodo = () => {
 
   useEffect(() => {
     let { generalAverage, priorityAverages } =
-      calculateAverageDurations(taskList);
+      calculateAverageDurations();
     setAverage(generalAverage);
     setAverageLow(priorityAverages[1]);
     setAverageMedium(priorityAverages[2]);

@@ -91,6 +91,8 @@ const { taskList, setTaskList } = contexto;
             text: any;
             priority: any;
             dueDate: any;
+            doneDate: any;
+            creationDate: any;
           }) => {
             
             const taskTemp = {
@@ -99,6 +101,8 @@ const { taskList, setTaskList } = contexto;
               text: task.text,
               priority: task.priority,
               dueDate: task.dueDate,
+              doneDate: task.doneDate,
+              creationDate: task.creationDate
             };
             return taskTemp;
           }
